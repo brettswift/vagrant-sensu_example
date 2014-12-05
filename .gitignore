@@ -1,0 +1,50 @@
+###Ruby###
+ 
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+
+
+###OSX###
+ 
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+
+###SublimeText###
+ 
+# SublimeText project files
+/*.sublime-project
+*.sublime-workspace
+sftp-config*.json
+
+# plugins
+.floo
+
+### Vagrant ###
+.vagrant/
+
+### Graphviz ###
+graphs/
+
+### R10k ###
+modules
+.tmp
+
+*.log
