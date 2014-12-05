@@ -12,6 +12,8 @@ Project Structure
 -----------------
 * `manifests/site.pp` node classification
 * `site` local module code
-* `modules` installed by librarian-puppet
+* `modules` installed by r10k from the Puppetfile
+* `modules_site`  roles and profiles local to this project.
+* `live_modules`  a placeholder folder used by Vagrant and put in the front of the modulepath for integrated development on 'Puppetfile' modules.
 * `shell` bootstrap provisioners.
 		* so you can use a clean base vagrant box that doesn't have puppet if you want
