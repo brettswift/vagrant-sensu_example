@@ -4,7 +4,11 @@ class mysensu (
 
   if($role == 'server'){
     include mysensu::server
-  }else{
+  }
+  elsif($role == 'agent'){
     include mysensu::agent
+  }
+  elsif($role == 'reports'){
+    include mysensu::reporting
   }
 }

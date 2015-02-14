@@ -11,7 +11,7 @@ nodes = {
 			    "sensuserver" => 10,
 			    "agent1" => 2,
 			    "agent2" => 3,
-			    "agent3" => 4
+			    "grafana" => 4
 			  }
 nodes.each { |nodename, nodeip| puts "#{nodename} --> 33.33.33.#{nodeip}" }
 
