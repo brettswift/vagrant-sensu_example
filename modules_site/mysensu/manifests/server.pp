@@ -21,12 +21,32 @@ class mysensu::server {
       ]
     }
 
-    package { 'nagios-plugins-procs': ensure => installed; }
-
-
     sensu::handler { 'default':
       command => 'mail -s \'sensu alert\' brett@brettswift.com',
     }
+
+    #
+    # file { 'graphite relay':
+    #   path    => ' /etc/sensu/conf.d/config_relay.json',
+    #   content => template('mysensu/config_relay.json.erb'),
+    # }
+
+    # not available in this version of sensu-puppet
+    # sensu::extension { 'graphite_metrics':
+    #   source  => "puppet:///modules/mysensu/extensions/metrics_relay/metrics.rb",
+    #   config  => {
+    #     'metrics_foobar' => 'value',
+    #   }
+    # }
+
+    # sensu::extension { 'graphite_metrics':
+    #   source  => "puppet:///modules/mysensu/extensions/metrics_relay/relay.rb",
+    #   config  => {
+    #     'foobar_setting' => 'value',
+    #   }
+    # }
+
+
 
     # sensu::check { 'check_for_puppet':
     #   command     => 'PATH=$PATH:/usr/lib/nagios/plugins check_procs -w 1:1 -C puppet',
@@ -40,12 +60,7 @@ class mysensu::server {
     #   mode   => 0755,
     # }
 
-    sensu::check { 'mem_usage':
-      command     => 'PATH=$PATH;/etc/sensu/plugins/check-ram.rb -w 50 -c -25',
-      interval    => 5,
-      handlers    => 'default',
-      subscribers => 'all',
-    }
+    include mysensu::checks
 
     include mysensu::dashboard
 
