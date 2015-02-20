@@ -1,9 +1,11 @@
-class mysensu::mygraphite {
+class mysensu::mygrafana {
 
   class { 'apache': default_vhost => false }
 
-  apache::vhost { 'my.grafana.dev':
-    servername      => 'my.grafana.dev',
+  include epel
+
+  apache::vhost { 'grafana':
+    servername      => 'grafana',
     port            => 8080,
     docroot         => '/opt/grafana',
     error_log_file  => 'grafana-error.log',
@@ -40,7 +42,7 @@ class mysensu::mygraphite {
       }
     }
 
-    Apache::Vhost['my.grafana.dev']->
+    Apache::Vhost['grafana']->
     Class['grafana']
 
 }

@@ -26,7 +26,6 @@ nodes.each do |nodename, nodeip|
 			nodeconfig.vm.box      = "centos-65-x64-virtualbox-puppet"
 			nodeconfig.vm.box_url  = "http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box"
 
-			hostname               = "#{nodename}"
 			nodeconfig.vm.hostname = "#{nodename}"
 
 			# nodeconfig.vm.provision :shell, :path => "./shell/bootstrap-vagrant-centos.sh"

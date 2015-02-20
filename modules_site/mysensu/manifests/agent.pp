@@ -14,10 +14,11 @@ class mysensu::agent {
    plugins           => [
    #   'puppet:///mysensu/plugins/ntp.rb',
    #   'puppet:///mysensu/plugins/postfix.rb'
-   'puppet:///modules/mysensu/check-ram.rb'
+   'puppet:///modules/mysensu/check-ram.rb',
+   'puppet:///modules/mysensu/vmstat-metrics.rb'
    ]
  }
-
+ #TODO: move all checks to a central location, instead of agent/server.
   include mysensu::checks
 
   # package { 'redphone':
@@ -25,6 +26,10 @@ class mysensu::agent {
   #   provider => sensu_gem,
   # }
 
+  file { 'graphite relay config':
+    path    => '/etc/sensu/conf.d/relay.json',
+    content => template('mysensu/relay.json.erb'),
+  }
 
   Class['mysensu::queue'] ->
   Package['nagios-plugins-procs']->

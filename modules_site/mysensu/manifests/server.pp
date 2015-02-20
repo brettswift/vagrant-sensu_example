@@ -10,6 +10,7 @@ class mysensu::server {
       rabbitmq_vhost       => '/sensu',
       server               => true,
       client               => true,
+      subscriptions        => ['all','sensu-test'],
       api                  => true,
       client_name          => $::hostname,
       client_address       => $::ipaddress_eth1,
@@ -18,7 +19,8 @@ class mysensu::server {
       plugins              => [
       #   'puppet:///mysensu/plugins/ntp.rb',
       #   'puppet:///mysensu/plugins/postfix.rb'
-          'puppet:///modules/mysensu/check-ram.rb'
+          'puppet:///modules/mysensu/check-ram.rb',
+          'puppet:///modules/mysensu/vmstat-metrics.rb'
       ]
     }
 
@@ -26,40 +28,27 @@ class mysensu::server {
       command => 'mail -s \'sensu alert\' brett@brettswift.com',
     }
 
-    #
-    # file { 'graphite relay':
-    #   path    => ' /etc/sensu/conf.d/config_relay.json',
-    #   content => template('mysensu/config_relay.json.erb'),
-    # }
+    file { 'graphite relay config':
+      path    => '/etc/sensu/conf.d/relay.json',
+      content => template('mysensu/relay.json.erb'),
+    }
 
     # not available in this version of sensu-puppet
     sensu::extension { 'graphite_metrics':
-      source  => "puppet:///modules/mysensu/extensions/metrics_relay/metrics.rb",
-      config  => {
-        'metrics_foobar' => 'value',
-      }
+      source  => "puppet:///modules/mysensu/extensions/graphite/metrics.rb",
+      # config  => {
+      #   'metrics_foobar' => 'value',
+      # }
     }
 
     sensu::extension { 'graphite_relay':
-      source  => "puppet:///modules/mysensu/extensions/metrics_relay/relay.rb",
-      config  => {
-        'foobar_setting' => 'value',
-      }
+      source  => "puppet:///modules/mysensu/extensions/graphite/relay.rb",
+      # config  => {
+      #   'foobar_setting' => 'value',
+      # }
     }
 
 
-
-    # sensu::check { 'check_for_puppet':
-    #   command     => 'PATH=$PATH:/usr/lib/nagios/plugins check_procs -w 1:1 -C puppet',
-    #   handlers    => 'default',
-    #   subscribers => 'sensu-test'
-    # }
-    #
-    # file { '/etc/sensu/plugins/check-ram.rb':
-    #   ensure => 'present',
-    #   source => 'puppet:///modules/mysensu/check-ram.rb',
-    #   mode   => 0755,
-    # }
 
     include mysensu::checks
 
