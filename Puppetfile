@@ -1,6 +1,6 @@
 forge 'http://forge.puppetlabs.com'
 
-mod 'puppetlabs/stdlib', '3.2.1'
+mod 'puppetlabs/stdlib', '4.5.1'
 mod 'puppetlabs/rabbitmq', '4.1.0'
 mod 'puppetlabs/apt' , '1.5.1'
 mod 'ripienaar/module_data', '0.0.3'

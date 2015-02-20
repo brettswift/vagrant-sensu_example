@@ -18,9 +18,10 @@ class mysensu::agent {
    'puppet:///modules/mysensu/vmstat-metrics.rb'
    ]
  }
- #TODO: move all checks to a central location, instead of agent/server.
+ #TODO: move all plugins to a central location, instead of agent/server.
   include mysensu::checks
 
+  # snippet to install gems:
   # package { 'redphone':
   #   ensure   => 'installed',
   #   provider => sensu_gem,
@@ -31,7 +32,6 @@ class mysensu::agent {
     content => template('mysensu/relay.json.erb'),
   }
 
-  Class['mysensu::queue'] ->
-  Package['nagios-plugins-procs']->
+  Class['mysensu::queue'] -> 
   Class['sensu']
 }
