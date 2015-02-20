@@ -4,17 +4,18 @@ class mysensu::server {
     contain mysensu::queue
 
     class { 'sensu':
-      rabbitmq_user     => 'sensu',
-      rabbitmq_password => 'password',
-      rabbitmq_host     => 'sensuserver',
-      rabbitmq_vhost     => '/sensu',
-      server            => true,
-      client            => true,
-      api               => true,
-      client_name       => $::hostname,
-      client_address    => $::ipaddress_eth1,
-      use_embedded_ruby => true,
-      plugins           => [
+      rabbitmq_user        => 'sensu',
+      rabbitmq_password    => 'password',
+      rabbitmq_host        => 'sensuserver',
+      rabbitmq_vhost       => '/sensu',
+      server               => true,
+      client               => true,
+      api                  => true,
+      client_name          => $::hostname,
+      client_address       => $::ipaddress_eth1,
+      # use_embedded_ruby    => true,
+      # sensu_plugin_version => present,
+      plugins              => [
       #   'puppet:///mysensu/plugins/ntp.rb',
       #   'puppet:///mysensu/plugins/postfix.rb'
           'puppet:///modules/mysensu/check-ram.rb'
@@ -32,19 +33,19 @@ class mysensu::server {
     # }
 
     # not available in this version of sensu-puppet
-    # sensu::extension { 'graphite_metrics':
-    #   source  => "puppet:///modules/mysensu/extensions/metrics_relay/metrics.rb",
-    #   config  => {
-    #     'metrics_foobar' => 'value',
-    #   }
-    # }
+    sensu::extension { 'graphite_metrics':
+      source  => "puppet:///modules/mysensu/extensions/metrics_relay/metrics.rb",
+      config  => {
+        'metrics_foobar' => 'value',
+      }
+    }
 
-    # sensu::extension { 'graphite_metrics':
-    #   source  => "puppet:///modules/mysensu/extensions/metrics_relay/relay.rb",
-    #   config  => {
-    #     'foobar_setting' => 'value',
-    #   }
-    # }
+    sensu::extension { 'graphite_relay':
+      source  => "puppet:///modules/mysensu/extensions/metrics_relay/relay.rb",
+      config  => {
+        'foobar_setting' => 'value',
+      }
+    }
 
 
 

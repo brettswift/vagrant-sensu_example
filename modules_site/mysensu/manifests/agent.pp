@@ -20,8 +20,6 @@ class mysensu::agent {
 
   include mysensu::checks
 
-  package { 'nagios-plugins-procs': ensure => installed; }
-
   # package { 'redphone':
   #   ensure   => 'installed',
   #   provider => sensu_gem,
