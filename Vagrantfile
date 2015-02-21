@@ -11,7 +11,8 @@ nodes = {
 			    "sensuserver" => 10,
 			    "agent1" => 2,
 			    "agent2" => 3,
-			    "agent3" => 4
+			    "graphite" => 4,
+			    "grafana" => 5
 			  }
 nodes.each { |nodename, nodeip| puts "#{nodename} --> 33.33.33.#{nodeip}" }
 
@@ -25,7 +26,6 @@ nodes.each do |nodename, nodeip|
 			nodeconfig.vm.box      = "centos-65-x64-virtualbox-puppet"
 			nodeconfig.vm.box_url  = "http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box"
 
-			hostname               = "#{nodename}"
 			nodeconfig.vm.hostname = "#{nodename}"
 
 			# nodeconfig.vm.provision :shell, :path => "./shell/bootstrap-vagrant-centos.sh"

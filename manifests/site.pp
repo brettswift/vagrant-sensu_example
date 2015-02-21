@@ -14,5 +14,14 @@ node /^sensuserver/, /us-west-2/{
 }
 
 node /^agent.+/ {
-	include roles::agent
+  include roles::agent
+}
+
+
+node /^graphite.+/ {
+  include roles::reports_graphite
+}
+
+node /^grafana.+/ {
+  include roles::reports_grafana
 }
