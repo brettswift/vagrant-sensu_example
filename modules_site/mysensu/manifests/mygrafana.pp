@@ -1,4 +1,6 @@
-class mysensu::mygrafana {
+class mysensu::mygrafana (
+    $graphite_host = $mysensu::graphite_host,
+  ){
 
   class { 'apache': default_vhost => false }
 
@@ -21,22 +23,29 @@ class mysensu::mygrafana {
     ]
   }
 
-  class { 'elasticsearch':
-    autoupgrade => true
+  class { 'elasticsearch' :
+    autoupgrade  => true,
+    manage_repo  => true,
+    repo_version => '1.4',
+    java_install => true,
   }
 
+  $elastic_search_instance = 'grafana-dash'
+  elasticsearch::instance { $elastic_search_instance :
+    config => {'http.cors.enabled' => 'true'},
+  }
 
   class { 'grafana':
   datasources  => {
     'graphite' => {
       'type'    => 'graphite',
-      'url'     => 'http://33.33.33.4',
+      'url'     => "http://${graphite_host}",
       'default' => 'true'
       },
       'elasticsearch' => {
         'type'      => 'elasticsearch',
-        'url'       => 'http://localhost:9200',
-        'index'     => 'grafana-dash',
+        'url'       => 'http://33.33.33.5:9200',
+        'index'     => $elastic_search_instance,
         'grafanaDB' => 'true', # lint:ignore:quoted_booleans
         },
       }

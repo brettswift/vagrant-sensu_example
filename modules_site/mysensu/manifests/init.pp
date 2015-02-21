@@ -1,20 +1,35 @@
 class mysensu (
-    $role = '',
+    $roles = [],
+    $sensu_host,
+    $graphite_host,
+    $rabbitmq_password,
+    $rabbitmq_vhost,
   ) {
 
-  if($role == 'server'){
+  #TODO: validation of roles
+  # hiera structure:
+  # mysensu::roles:
+  #   - agent
+  #   - server
+  #   - dashboard
+  #   - graphite
+  #   - grafana
+
+  include mysensu::agent
+  if !is_array($roles){
+    fail("mysensu::roles: must be an array.")
+  }
+
+  if member($roles, 'server'){
     include mysensu::server
   }
-  elsif($role == 'agent'){
-    include mysensu::agent
-  }
-  elsif($role == 'graphite'){
+
+  if member($roles, 'graphite'){
     include mysensu::mygraphite
   }
-  elsif($role == 'grafana'){
+
+  if member($roles, 'grafana'){
     include mysensu::mygrafana
   }
-  else{
-    fail("mysensu role: '${role}' is not supported")
-  }
+
 }

@@ -1,0 +1,18 @@
+sensu::purge_config: true
+sensu::use_embedded_ruby: true
+sensu::sensu_plugin_version: 'present'
+
+sensu::rabbitmq_password: password
+sensu::rabbitmq_port: 5672
+sensu::rabbitmq_vhost: '/sensu'
+sensu::rabbitmq_host: 'sensuserver'
+sensu::client_name: %{::hostname}
+sensu::client_address: %{::ipaddress_eth1}
+sensu::subscriptions:
+  - all
+  - sensu-test
+
+mysensu::graphite_host: '33.33.33.4' #doesn't resolve on hostname?
+mysensu::sensu_host: 'sensuserver' #was IP
+mysensu::rabbitmq_vhost: '/sensu' #TODO lookup 
+mysensu::rabbitmq_password: 'password' #TODO lookup

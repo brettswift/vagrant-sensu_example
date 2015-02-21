@@ -1,0 +1,665 @@
+{
+  "id": null,
+  "title": "load dashboard",
+  "originalTitle": "load dashboard",
+  "tags": [
+    "dashboard"
+  ],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "title": "Title Bar",
+      "height": "70px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "no title (click here)",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "text",
+          "id": 11,
+          "mode": "markdown",
+          "content": "## Viewing:    $server\n\n\n\n",
+          "style": {},
+          "links": []
+        },
+        {
+          "title": "Load over 15min",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "singlestat",
+          "id": 12,
+          "links": [],
+          "maxDataPoints": 100,
+          "interval": null,
+          "targets": [
+            {
+              "target": "$server.load_avg.fifteen"
+            }
+          ],
+          "cacheTimeout": null,
+          "format": "none",
+          "prefix": "",
+          "postfix": "",
+          "nullText": null,
+          "valueMaps": [
+            {
+              "value": "null",
+              "op": "=",
+              "text": "N/A"
+            }
+          ],
+          "nullPointMode": "connected",
+          "valueName": "avg",
+          "prefixFontSize": "50%",
+          "valueFontSize": "80%",
+          "postfixFontSize": "50%",
+          "thresholds": "",
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "sparkline": {
+            "show": false,
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "fillColor": "rgba(31, 118, 189, 0.18)"
+          }
+        },
+        {
+          "title": "load over 5min",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "singlestat",
+          "id": 13,
+          "links": [],
+          "maxDataPoints": 100,
+          "interval": null,
+          "targets": [
+            {
+              "target": "$server.load_avg.five"
+            }
+          ],
+          "cacheTimeout": null,
+          "format": "none",
+          "prefix": "",
+          "postfix": "",
+          "nullText": null,
+          "valueMaps": [
+            {
+              "value": "null",
+              "op": "=",
+              "text": "N/A"
+            }
+          ],
+          "nullPointMode": "connected",
+          "valueName": "avg",
+          "prefixFontSize": "50%",
+          "valueFontSize": "80%",
+          "postfixFontSize": "50%",
+          "thresholds": "",
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "sparkline": {
+            "show": false,
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "fillColor": "rgba(31, 118, 189, 0.18)"
+          }
+        }
+      ],
+      "showTitle": false
+    },
+    {
+      "title": "New row",
+      "height": "150px",
+      "collapse": false,
+      "editable": true,
+      "panels": [
+        {
+          "title": "agent1 %Memory",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "singlestat",
+          "id": 5,
+          "links": [],
+          "maxDataPoints": 100,
+          "interval": null,
+          "targets": [
+            {
+              "target": "asPercent(agent1.memory.used, agent1.memory.total)"
+            }
+          ],
+          "cacheTimeout": null,
+          "format": "none",
+          "prefix": "",
+          "postfix": "",
+          "nullText": null,
+          "valueMaps": [],
+          "nullPointMode": "connected",
+          "valueName": "avg",
+          "prefixFontSize": "50%",
+          "valueFontSize": "80%",
+          "postfixFontSize": "50%",
+          "thresholds": "0,60,85",
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(46, 129, 39, 0.4)",
+            "rgba(245, 150, 40, 0.73)",
+            "rgba(225, 40, 40, 0.59)"
+          ],
+          "sparkline": {
+            "show": true,
+            "full": true,
+            "lineColor": "rgb(31, 120, 193)",
+            "fillColor": "rgba(211, 60, 30, 0.18)"
+          }
+        },
+        {
+          "title": "Sensuserver %Memory",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "singlestat",
+          "id": 6,
+          "links": [],
+          "maxDataPoints": 100,
+          "interval": null,
+          "targets": [
+            {
+              "target": "asPercent(sensuserver.memory.used, sensuserver.memory.total)"
+            }
+          ],
+          "cacheTimeout": null,
+          "format": "none",
+          "prefix": "",
+          "postfix": "",
+          "nullText": null,
+          "valueMaps": [
+            {
+              "value": "null",
+              "op": "=",
+              "text": "N/A"
+            }
+          ],
+          "nullPointMode": "connected",
+          "valueName": "avg",
+          "prefixFontSize": "50%",
+          "valueFontSize": "80%",
+          "postfixFontSize": "50%",
+          "thresholds": "0,60,80",
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(71, 212, 59, 0.4)",
+            "rgba(245, 150, 40, 0.73)",
+            "rgba(225, 40, 40, 0.59)"
+          ],
+          "sparkline": {
+            "show": true,
+            "full": true,
+            "lineColor": "rgb(31, 120, 193)",
+            "fillColor": "rgba(223, 26, 190, 0.2)"
+          }
+        },
+        {
+          "title": "$server CPU 1min average",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "singlestat",
+          "id": 7,
+          "links": [],
+          "maxDataPoints": 100,
+          "interval": null,
+          "targets": [
+            {
+              "target": "$server.load_avg.one"
+            }
+          ],
+          "cacheTimeout": null,
+          "format": "percent",
+          "prefix": "",
+          "postfix": "",
+          "nullText": null,
+          "valueMaps": [
+            {
+              "value": "null",
+              "op": "=",
+              "text": "N/A"
+            }
+          ],
+          "nullPointMode": "connected",
+          "valueName": "current",
+          "prefixFontSize": "70%",
+          "valueFontSize": "120%",
+          "postfixFontSize": "30%",
+          "thresholds": "0,60,95",
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "sparkline": {
+            "show": true,
+            "full": true,
+            "lineColor": "rgb(99, 133, 79)",
+            "fillColor": "rgba(68, 124, 73, 0.18)"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Welcome to Grafana",
+      "height": "210px",
+      "collapse": false,
+      "editable": true,
+      "panels": [
+        {
+          "id": 2,
+          "span": 4,
+          "type": "text",
+          "mode": "html",
+          "content": "<br/>\n\n<div class=\"row-fluid\">\n  <div class=\"span6\">\n    <ul>\n      <li>\n        <a href=\"http://grafana.org/docs#configuration\" target=\"_blank\">Configuration</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/troubleshooting\" target=\"_blank\">Troubleshooting</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/support\" target=\"_blank\">Support</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/intro\" target=\"_blank\">Getting started</a>  (Must read!)\n      </li>\n    </ul>\n  </div>\n  <div class=\"span6\">\n    <ul>\n      <li>\n        <a href=\"http://grafana.org/docs/features/graphing\" target=\"_blank\">Graphing</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/annotations\" target=\"_blank\">Annotations</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/graphite\" target=\"_blank\">Graphite</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/influxdb\" target=\"_blank\">InfluxDB</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/opentsdb\" target=\"_blank\">OpenTSDB</a>\n      </li>\n    </ul>\n  </div>\n</div>",
+          "style": {},
+          "title": "Documentation Links"
+        },
+        {
+          "title": "$server CPU",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "id": 10,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": 100,
+            "rightMax": null,
+            "leftMin": 0,
+            "rightMin": null,
+            "threshold1": 70,
+            "threshold2": 85,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(232, 47, 47, 0.44)",
+            "thresholdLine": false
+          },
+          "lines": true,
+          "fill": 2,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": false,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false,
+            "alignAsTable": false,
+            "rightSide": true
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "movingAverage($server.vmstat.cpu.user, 5)"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": [],
+          "leftYAxisLabel": "%"
+        },
+        {
+          "title": "$server load increase ratio 1min/5min",
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "id": 14,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": 0,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "alias($server.load_avg.one, '1min avg')",
+              "hide": true
+            },
+            {
+              "target": "alias($server.load_avg.five, '5min avg')",
+              "hide": true
+            },
+            {
+              "target": "alias($server.load_avg.fifteen, '15min avg')",
+              "hide": true
+            },
+            {
+              "target": "divideSeries(#A, #B)",
+              "hide": false
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": [],
+          "leftYAxisLabel": "",
+          "maxDataPoints": ""
+        }
+      ]
+    },
+    {
+      "title": "test",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "IO",
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "id": 8,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": 100,
+            "rightMax": null,
+            "leftMin": 0,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "movingAverage($server.vmstat.io.*, 3)"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": [],
+          "leftYAxisLabel": "%"
+        },
+        {
+          "title": "Memory",
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "id": 9,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": 1000,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": false,
+            "total": false,
+            "avg": false,
+            "alignAsTable": true,
+            "rightSide": true
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "aliasByNode(scale(*.vmstat.memory.cache, 0.000976562), 0, 3)",
+              "hide": true
+            },
+            {
+              "target": "aliasByNode(scale(*.vmstat.memory.swap_used, 0.000976562), 0, 3)"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "leftYAxisLabel": "MB",
+          "links": []
+        }
+      ]
+    }
+  ],
+  "nav": [
+    {
+      "type": "timepicker",
+      "collapse": false,
+      "enable": true,
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "now": true,
+      "notice": false
+    }
+  ],
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "type": "query",
+        "datasource": null,
+        "refresh_on_load": false,
+        "name": "server",
+        "options": [
+          {
+            "text": "All",
+            "value": "{agent1,carbon,grafana,graphite,sensuserver}"
+          },
+          {
+            "text": "agent1",
+            "value": "agent1"
+          },
+          {
+            "text": "carbon",
+            "value": "carbon"
+          },
+          {
+            "text": "grafana",
+            "value": "grafana"
+          },
+          {
+            "text": "graphite",
+            "value": "graphite"
+          },
+          {
+            "text": "sensuserver",
+            "value": "sensuserver"
+          }
+        ],
+        "includeAll": true,
+        "allFormat": "glob",
+        "query": "*",
+        "current": {
+          "text": "agent1",
+          "value": "agent1"
+        },
+        "refresh": false
+      }
+    ],
+    "enable": true
+  },
+  "annotations": {
+    "list": [
+      {
+        "name": "Software Deploy",
+        "datasource": "graphite",
+        "showLine": true,
+        "iconColor": "rgb(235, 243, 232)",
+        "lineColor": "rgba(255, 255, 255, 0.89)",
+        "iconSize": 15,
+        "enable": true,
+        "query": "tags:deploy",
+        "tags": "deploy",
+        "target": ""
+      },
+      {
+        "name": "curl example",
+        "datasource": "graphite",
+        "showLine": true,
+        "iconColor": "#C0C6BE",
+        "lineColor": "rgba(255, 96, 96, 0.592157)",
+        "iconSize": 13,
+        "enable": false,
+        "target": "#Use this to create an annotation: curl -X POST \"http://33.33.33.4/events/\" -d '{\"what\": \"Web Service\", \"tags\": \"deploy\", \"data\":\"version 1.1.7\"}'"
+      }
+    ],
+    "enable": true
+  },
+  "refresh": "5s",
+  "version": 6,
+  "hideAllLegends": false
+}
