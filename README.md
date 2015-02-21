@@ -15,9 +15,4 @@ It consists of sample nodes to monitor with Sensu.
 * `modules_site`  roles and profiles local to this project.
 * `live_modules`  a placeholder folder used by Vagrant and put in the front of the modulepath for integrated development on 'Puppetfile' modules.
 * `shell` bootstrap provisioners.
-		* so you can use a clean base vagrant box that doesn't have puppet if you want
-
-
-### TODO
-* add graphite config.
-		* Use `WizardVan` ? : http://www.joemiller.me/2013/12/07/sensu-and-graphite-part-2
+	* so you can use a clean base vagrant box that doesn't have puppet if you want
