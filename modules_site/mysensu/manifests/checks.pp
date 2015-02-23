@@ -1,6 +1,8 @@
 class mysensu::checks {
 
 
+    #TODO: allow hiera injection of schemes
+
     package { 'nagios-plugins-procs': ensure => installed; }
 
     sensu::check { 'mem_usage':
@@ -19,6 +21,22 @@ class mysensu::checks {
       subscribers => 'all',
     }
 
+    sensu::check { 'cpu_load':
+      type        => 'metric',
+      command     => 'PATH=$PATH;/opt/sensu/embedded/bin/ruby /etc/sensu/plugins/load-metrics.rb',
+      interval    => 5,
+      handlers    => ['relay'],
+      subscribers => 'all',
+    }
+
+
+    sensu::check { 'memory_metrics':
+      type        => 'metric',
+      command     => 'PATH=$PATH;/opt/sensu/embedded/bin/ruby /etc/sensu/plugins/memory-metrics.rb',
+      interval    => 5,
+      handlers    => ['relay'],
+      subscribers => 'all',
+    }
 
 
     # sensu::check { 'check_for_puppet':

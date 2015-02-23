@@ -1,9 +1,5 @@
 class profiles::sensu_monitor (
 
 ){
-
-  class { 'mysensu':
-    role => 'server',
-  }
-
+  include mysensu
 }

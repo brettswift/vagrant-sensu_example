@@ -1,9 +1,10 @@
-class mysensu::dashboard {
-
+class mysensu::dashboard (
+    $sensu_host = $mysensu::sensu_host,
+  ){
 
     class {  'uchiwa':
       install_repo => false,
-      host    =>     '33.33.33.10',
+      host    =>     $sensu_server,
       # user    =>     'guest',
       # pass    =>     'guest',
       refresh    =>     5,
