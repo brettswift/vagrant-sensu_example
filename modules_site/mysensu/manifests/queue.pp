@@ -1,7 +1,5 @@
 class mysensu::queue (
-    $rabbitmq_host = $mysensu::rabbitmq_host,
     $rabbitmq_password = $mysensu::rabbitmq_password,
-    $rabbitmq_port = $mysensu::rabbitmq_port,
     $rabbitmq_vhost = $mysensu::rabbitmq_vhost,
   ){
 
