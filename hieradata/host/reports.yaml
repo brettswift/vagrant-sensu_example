@@ -1,2 +1,3 @@
 mysensu::roles:
   - graphite
+  - grafana

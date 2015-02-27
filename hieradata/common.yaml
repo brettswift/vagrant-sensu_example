@@ -14,5 +14,6 @@ sensu::subscriptions:
 
 mysensu::graphite_host: '33.33.33.4' #doesn't resolve on hostname?
 mysensu::sensu_host: 'sensuserver' #was IP
-mysensu::rabbitmq_vhost: '/sensu' #TODO lookup 
+mysensu::rabbitmq_vhost: '/sensu' #TODO lookup
 mysensu::rabbitmq_password: 'password' #TODO lookup
+apache::default_vhost: false

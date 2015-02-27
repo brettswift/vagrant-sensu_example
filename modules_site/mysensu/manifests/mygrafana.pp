@@ -1,14 +1,18 @@
 class mysensu::mygrafana (
     $graphite_host = $mysensu::graphite_host,
+    $graphite_port = $mysensu::graphite_port,
+    $grafana_port  = $mysensu::grafana_port,
   ){
 
-  class { 'apache': default_vhost => false }
+  if !defined(Class['apache']){
+    class { 'apache': default_vhost => false }
+  }
 
   include epel
 
   apache::vhost { 'grafana':
     servername      => 'grafana',
-    port            => 8080,
+    port            => $grafana_port,
     docroot         => '/opt/grafana',
     error_log_file  => 'grafana-error.log',
     access_log_file => 'grafana-access.log',
@@ -39,12 +43,12 @@ class mysensu::mygrafana (
   datasources  => {
     'graphite' => {
       'type'    => 'graphite',
-      'url'     => "http://${graphite_host}",
+      'url'     => "http://${graphite_host}:${graphite_port}",
       'default' => 'true'
       },
       'elasticsearch' => {
         'type'      => 'elasticsearch',
-        'url'       => 'http://33.33.33.5:9200',
+        'url'       => 'http://33.33.33.4:9200',
         'index'     => $elastic_search_instance,
         'grafanaDB' => 'true', # lint:ignore:quoted_booleans
         },

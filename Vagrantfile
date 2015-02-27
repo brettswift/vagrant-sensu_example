@@ -11,8 +11,7 @@ nodes = {
 			    "sensuserver" => 10,
 			    "agent1"      => 2,
 			    "agent2"      => 3,
-			    "graphite"    => 4,
-			    "grafana"     => 5
+			    "reports"     => 4
 			  }
 nodes.each { |nodename, nodeip| puts "#{nodename} --> 33.33.33.#{nodeip}" }
 
@@ -31,6 +30,8 @@ nodes.each do |nodename, nodeip|
 
 			nodeconfig.vm.network :private_network, ip: "33.33.33.#{nodeip}"
 
+      # TODO: try moving the r10k module directory out of the /vagrant folder
+      # to solve the issue that forces you to do a `vagrant reload`
 			nodeconfig.vm.provision :puppet do |puppet|
 				puppet.manifests_path 		= "manifests"
 				puppet.manifest_file  		= "r10k_modules.pp"

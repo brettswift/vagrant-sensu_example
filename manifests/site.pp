@@ -18,10 +18,6 @@ node /^agent.+/ {
 }
 
 
-node /^graphite.+/ {
-  include roles::reports_graphite
-}
-
-node /^grafana.+/ {
-  include roles::reports_grafana
+node /^reports.+/ {
+  include roles::reports
 }
