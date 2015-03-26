@@ -4,4 +4,3 @@ sensu::api: true
 mysensu::roles:
   - agent
   - server
-  - dashboard

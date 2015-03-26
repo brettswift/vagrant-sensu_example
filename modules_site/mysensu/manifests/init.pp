@@ -13,7 +13,7 @@ class mysensu (
   # mysensu::roles:
   #   - agent
   #   - server
-  #   - dashboard
+  #   - dashboard  <-- not valid so far.. why was it removed below??
   #   - graphite
   #   - grafana
 
@@ -22,10 +22,16 @@ class mysensu (
     fail("mysensu::roles: must be an array.")
   }
 
+  if size($roles) < 1 {
+    fail("You must supply at least one role.")
+  }
+
+
   $valid_roles = ['agent','server','graphite','grafana']
   $valid_role_as_string = join($valid_roles,',')
   if !member($valid_roles, $roles){
-    fail("Valid roles are: ${valid_role_as_string}, but you gave me: join(${roles},',')")
+    $given_roles = join($roles,',')
+    fail("Valid roles are: ${valid_role_as_string}, but you gave me: ${given_roles}")
   }
 
   if member($roles, 'server'){

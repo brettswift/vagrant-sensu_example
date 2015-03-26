@@ -25,6 +25,8 @@ nodes.each do |nodename, nodeip|
 
 			nodeconfig.vm.hostname = "#{nodename}"
 
+      config.vm.network "forwarded_port", guest: 8080, host: 8080
+
       # optional, if you choose a vagrant box without puppet.
 			# nodeconfig.vm.provision :shell, :path => "./shell/bootstrap-vagrant-centos.sh"
 

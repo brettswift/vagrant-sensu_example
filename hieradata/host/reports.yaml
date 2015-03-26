@@ -1,3 +1,4 @@
 mysensu::roles:
   - graphite
   - grafana
+  - agent
