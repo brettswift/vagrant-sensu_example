@@ -1,5 +1,5 @@
 class mysensu (
-    $roles = [],
+    $roles         = $mysensu::params::roles,
     $sensu_host,
     $graphite_host,
     $graphite_port = $mysensu::params::graphite_port,
